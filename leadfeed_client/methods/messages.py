@@ -33,9 +33,10 @@ class LeadFeedMessages(BaseMethod):
                     continue
             text = html.unescape(message['text'])
             media_type = message['media_type']
+            media_raw = message['media']
             media = None
-            if not is_null_field(media_type):
-                media_ = json.loads(html.unescape(message['media']))
+            if not is_null_field(media_type) and not is_null_field(media_raw):
+                media_ = json.loads(html.unescape(media_raw))
                 if media_type == MediaTypeEnum.IMAGE:
                     media = MessageMediaType(
                         image=MessageMediaImageType(url=media_['url'])
