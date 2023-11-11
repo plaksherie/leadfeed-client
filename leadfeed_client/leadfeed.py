@@ -30,3 +30,16 @@ class LeadFeed:
     @property
     def messages(self) -> LeadFeedMessages:
         return self._messages
+
+    async def __aenter__(self) -> "LeadFeed":
+        """Async enter."""
+        return self
+
+    async def __aexit__(self, *exc_info) -> None:
+        """Async exit."""
+        await self.close_session()
+
+    async def close_session(self) -> None:
+        """Close open client session."""
+        if self._session and self._close_session:
+            await self._session.close()
