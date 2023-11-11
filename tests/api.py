@@ -55,6 +55,6 @@ async def dialog():
 
 
 if __name__ == '__main__':
-    # asyncio.run(dialogs())
+    asyncio.run(dialogs())
     # asyncio.run(dialog())
-    asyncio.run(messages())
+    # asyncio.run(messages())

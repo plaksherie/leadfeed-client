@@ -59,7 +59,7 @@ class LeadFeedDialogs(BaseMethod):
             dialogs = await self.get(page, filter_date=filter_date)
             all_dialogs.extend(dialogs.dialogs)
             next_page = dialogs.next_page
-            page += 1
+            page = dialogs.next_page
             if len(dialogs.dialogs) != 10:
                 next_page = 0
             else:
