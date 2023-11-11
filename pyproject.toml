@@ -1,15 +1,17 @@
 [tool.poetry]
-name = "leadfead-client"
+name = "leadfeed-client"
 version = "0.1.0"
 description = ""
 authors = ["PLAKSHERiE <67220210+PLAKSHERiE@users.noreply.github.com>"]
 readme = "README.md"
-packages = [{include = "leadfead_client"}]
+packages = [{include = "leadfeed_client"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 aiohttp = "^3.8.6"
-
+webdriver-manager = "^4.0.1"
+selenium-wire = "^5.1.0"
+pydantic = "^2.4.2"
 
 [build-system]
 requires = ["poetry-core"]

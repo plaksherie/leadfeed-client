@@ -1,0 +1,7 @@
+[leadfeed]
+login = ''
+password = ''
+sesid = ''
+
+[selenium]
+delay_login = 60
