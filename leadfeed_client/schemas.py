@@ -55,6 +55,7 @@ class MessageType(BaseModel):
     media_type: Union[str, None] = None
     cdn_links: List[str]
     item_type: MessageItemType
+    owner: bool
 
     def is_media(
             self,

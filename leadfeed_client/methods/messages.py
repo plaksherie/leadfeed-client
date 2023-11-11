@@ -52,6 +52,7 @@ class LeadFeedMessages(BaseMethod):
                 media_type=message['media_type'],
                 cdn_links=get_cdn_links_from_text(text),
                 item_type=message['item_type'],
-                date=message_date
+                date=message_date,
+                owner=message['in'] == 0
             ))
         return messages
