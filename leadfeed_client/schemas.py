@@ -45,6 +45,7 @@ class MessageItemType(Enum):
     TEXT = 'text'
     LINK = 'link'
     MEDIA = 'media'
+    GENERIC_XMA = 'generic_xma'
 
 
 class MessageType(BaseModel):
