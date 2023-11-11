@@ -37,11 +37,11 @@ class LeadFeedMessages(BaseMethod):
             media = None
             if not is_null_field(media_type) and not is_null_field(media_raw):
                 media_ = json.loads(html.unescape(media_raw))
-                if media_type == MediaTypeEnum.IMAGE:
+                if media_type == MediaTypeEnum.IMAGE.value:
                     media = MessageMediaType(
                         image=MessageMediaImageType(url=media_['url'])
                     )
-                elif media_type == MediaTypeEnum.VIDEO:
+                elif media_type == MediaTypeEnum.VIDEO.value:
                     media = MessageMediaType(
                         video=MessageMediaVideoType(url=media_['video']['url'])
                     )
