@@ -7,6 +7,7 @@ from leadfeed_client.const import selenium_service, selenium_options, selenium_w
 
 
 def get_selenium_driver() -> webdriver.Chrome | webdriver.Edge:
+    selenium_options.add_experimental_option('excludeSwitches', ['enable-logging'])
     if isinstance(selenium_options, webdriver.ChromeOptions):
         return webdriver.Chrome(service=selenium_service, options=selenium_options)
     else:
