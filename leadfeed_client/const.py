@@ -1,3 +1,4 @@
+import os
 from enum import Enum, StrEnum, IntEnum
 from typing import Dict, TypedDict
 from selenium.webdriver.chrome.service import Service
@@ -111,6 +112,14 @@ HTTP_STATUS_CODE_GOOD_LIST: list[HttpStatusCode] = [
 BASE_API_HEADERS: Dict[str, str] = {
     CONTENT_TYPE: HttpContentType.BASE_FORM.value,
     USER_AGENT: DEFAULT_USER_AGENT,
+}
+
+selenium_wire_storage = os.path.join(
+    os.getcwd(), "selenium_wire")
+
+
+selenium_wire_options = {
+    'request_storage_base_dir': selenium_wire_storage
 }
 
 

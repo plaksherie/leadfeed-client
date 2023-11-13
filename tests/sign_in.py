@@ -1,5 +1,9 @@
+import os
+
 from leadfeed_client import LeadFeedSignIn
+from leadfeed_client.const import selenium_wire_storage
 from tests.loader import config
+
 
 sign_in = LeadFeedSignIn(
     config.leadfeed.login,

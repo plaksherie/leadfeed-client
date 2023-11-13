@@ -1,9 +1,9 @@
 import re
 from typing import Union, List
 
-from seleniumwire import webdriver
+from selenium import webdriver
 
-from leadfeed_client.const import selenium_service, selenium_options
+from leadfeed_client.const import selenium_service, selenium_options, selenium_wire_options
 
 
 def get_selenium_driver() -> webdriver.Chrome | webdriver.Edge:
