@@ -10,8 +10,8 @@ packages = [{include = "leadfeed_client"}]
 python = "^3.11"
 aiohttp = "^3.8.6"
 webdriver-manager = "^4.0.1"
-selenium-wire = "^5.1.0"
 pydantic = "^2.3"
+selenium = "^4.15.2"
 
 [build-system]
 requires = ["poetry-core"]

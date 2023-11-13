@@ -1,8 +1,9 @@
 import os
 from enum import Enum, StrEnum, IntEnum
-from typing import Dict, TypedDict
+from typing import Dict
+
+from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from seleniumwire import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
