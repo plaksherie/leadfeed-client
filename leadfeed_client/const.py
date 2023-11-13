@@ -3,6 +3,7 @@ from typing import Dict, TypedDict
 from selenium.webdriver.chrome.service import Service
 from seleniumwire import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 from aiohttp.hdrs import CONTENT_TYPE, USER_AGENT
 
@@ -10,6 +11,7 @@ DEFAULT_USER_AGENT = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537
                       'Chrome/121.0.0.0 Safari/537.36')
 
 BASE_API_URL = 'https://leadfeed.ru'
+LEADFEED_CDN_MEDIA = 'https://cdnnew.leadfeed.ru/bvc'
 
 
 class UrlRoutes(Enum):
@@ -112,5 +114,9 @@ BASE_API_HEADERS: Dict[str, str] = {
 }
 
 
-selenium_service = Service(executable_path=ChromeDriverManager().install())
-selenium_options = webdriver.ChromeOptions()
+try:
+    selenium_service = Service(executable_path=ChromeDriverManager().install())
+    selenium_options = webdriver.ChromeOptions()
+except Exception as e:
+    selenium_service = Service(executable_path=EdgeChromiumDriverManager().install())
+    selenium_options = webdriver.EdgeOptions()

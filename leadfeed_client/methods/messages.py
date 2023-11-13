@@ -3,7 +3,7 @@ import html
 import json
 import re
 
-from leadfeed_client.const import UrlRoutes, HttpMethod
+from leadfeed_client.const import UrlRoutes, HttpMethod, LEADFEED_CDN_MEDIA
 from leadfeed_client.enums.media import MediaTypeEnum
 from leadfeed_client.methods.base import BaseMethod
 from leadfeed_client.schemas import MessagesGetFormData, MessageType, MessageMediaType, MessageMediaImageType, \
@@ -42,8 +42,11 @@ class LeadFeedMessages(BaseMethod):
                         image=MessageMediaImageType(url=media_['url'])
                     )
                 elif media_type == MediaTypeEnum.VIDEO.value:
+                    url = media_['video']['url']
+                    if LEADFEED_CDN_MEDIA not in url:
+                        url = f'{LEADFEED_CDN_MEDIA}/{url}'
                     media = MessageMediaType(
-                        video=MessageMediaVideoType(url=media_['video']['url'])
+                        video=MessageMediaVideoType(url=url)
                     )
 
             messages.append(MessageType(

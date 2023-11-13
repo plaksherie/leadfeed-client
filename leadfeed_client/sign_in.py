@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from leadfeed_client.const import UrlRoutes, BASE_API_URL
-from leadfeed_client.utils import get_chrome_driver
+from leadfeed_client.utils import get_selenium_driver
 
 
 class LeadFeedSignIn:
@@ -28,21 +28,21 @@ class LeadFeedSignIn:
     def start(
             self,
     ) -> str | None:
-        chrome_driver = get_chrome_driver()
-        chrome_driver.get(BASE_API_URL + UrlRoutes.LOGIN.value)
-        form = WebDriverWait(chrome_driver, 30).until(
+        driver = get_selenium_driver()
+        driver.get(BASE_API_URL + UrlRoutes.LOGIN.value)
+        form = WebDriverWait(driver, 30).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, self.selector_login_form))
         )
         form.find_element(By.CSS_SELECTOR, self.selector_field_login).send_keys(self.login)
         form.find_element(By.CSS_SELECTOR, self.selector_field_password).send_keys(self.password)
-        WebDriverWait(chrome_driver, self.delay_login).until(
+        WebDriverWait(driver, self.delay_login).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, self.selector_sign_in_final))
         )
         sesid = None
-        for cookie in chrome_driver.get_cookies():
+        for cookie in driver.get_cookies():
             if cookie['name'] == self.cookie_session_id_key:
                 sesid = cookie['value']
                 break
-        chrome_driver.close()
-        chrome_driver.quit()
+        driver.close()
+        driver.quit()
         return sesid

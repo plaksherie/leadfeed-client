@@ -31,13 +31,13 @@ async def messages():
     )
     get_messages = await leadfeed.messages.get(
         MessagesGetFormData(
-            inst_user='62059700055',
-            pk='56448397796',
-            thread_id='c9ea098d4e2c2972fd85a4fc6a638f65'
+            inst_user='61894893230',
+            pk='50494207657',
+            thread_id='4f47304e2889e7ff4a1ab16d37eb4809'
         ),
-        filter_date=DialogsFilterDate(
-            from_date=datetime.datetime(2023, 11, 9, 3, 39, 0)
-        )
+        # filter_date=DialogsFilterDate(
+        #     from_date=datetime.datetime(2023, 11, 9, 3, 39, 0)
+        # )
     )
     print(get_messages)
 

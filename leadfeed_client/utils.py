@@ -6,8 +6,11 @@ from seleniumwire import webdriver
 from leadfeed_client.const import selenium_service, selenium_options
 
 
-def get_chrome_driver() -> webdriver.Chrome:
-    return webdriver.Chrome(service=selenium_service, options=selenium_options)
+def get_selenium_driver() -> webdriver.Chrome | webdriver.Edge:
+    if isinstance(selenium_options, webdriver.ChromeOptions):
+        return webdriver.Chrome(service=selenium_service, options=selenium_options)
+    else:
+        return webdriver.Edge(service=selenium_service, options=selenium_options)
 
 
 def get_cdn_links_from_text(
